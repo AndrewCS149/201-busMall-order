@@ -13,7 +13,6 @@ function populateForm() {
   var selectElement = document.getElementById('items');
   for (var i in Product.allProducts) {
     var optionEl = document.createElement('option');
-    optionEl.type = 'number';
     optionEl.textContent = Product.allProducts[i].name;
     selectElement.appendChild(optionEl);
   }
