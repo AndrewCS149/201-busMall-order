@@ -11,7 +11,7 @@ function populateForm() {
 
   // fill in the item drop down list with all image names
   var selectElement = document.getElementById('items');
-  for (var i in Product.allProducts) {
+  for (var i = 0; i < Product.allProducts.length; i++) {
     var optionEl = document.createElement('option');
     optionEl.textContent = Product.allProducts[i].name;
     selectElement.appendChild(optionEl);
@@ -37,6 +37,7 @@ function addSelectedItemToCart() {
 
   var itemName = document.getElementById('items').value;
   var quantity = Number(document.getElementById('quantity').value);
+  console.log(itemName);
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
