@@ -64,7 +64,6 @@ function updateCounter() {
   }
 
   // post quantities total in header
-
   count.textContent = `Item Count: ${totalCount}`;
   countParent.removeChild(countParent.lastChild);
   countParent.appendChild(count);
