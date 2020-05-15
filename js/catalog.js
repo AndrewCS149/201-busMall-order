@@ -5,6 +5,8 @@
 // Set up an empty cart for use on this page.
 var cart = new Cart([]);
 var totalCount = 0;
+var countParent = document.getElementsByTagName('ul')[0];
+var count = document.createElement('li');
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -54,22 +56,36 @@ function addSelectedItemToCart() {
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
 
+  // add up quantities
   for (var i = 0; i < 1; i++) {
     if (cart.items[i].quantity > 0) {
       totalCount += cart.items[i].quantity;
     }
   }
 
-  var countParent = document.getElementsByTagName('ul')[0];
-  var count = document.createElement('li');
+  // post quantities total in header
+
   count.textContent = `Item Count: ${totalCount}`;
   countParent.removeChild(countParent.lastChild);
   countParent.appendChild(count);
 }
+
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
+
+  // get item name, item quantity and the cart preview <div>
+  var itemName = document.getElementById('items').value;
+  var quantity = Number(document.getElementById('quantity').value);
+  var cartPreview = document.getElementById('cartContents');
+
+  // create new <p> tag
+  var item = document.createElement('p');
+
+  // append new cart preview item
+  item.textContent = `Item: ${itemName}, Quantity: ${quantity}`;
+  cartPreview.appendChild(item);
 }
 
 // Set up the "submit" event listener on the form.
