@@ -24,13 +24,12 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
-
 }
 
 // TODO: Add the selected item and quantity to the cart
@@ -44,6 +43,7 @@ function addSelectedItemToCart() {
   for (var i = 0; i < Product.allProducts.length; i++) {
     if (Product.allProducts[i].name === itemName) {
       cart.addItem(itemName, quantity);
+      return;
     }
   }
 }
